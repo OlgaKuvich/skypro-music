@@ -8,6 +8,7 @@ export default function Bar() {
             <div className={styles.barContent}>
                 <div className={styles.barPlayerProgress} />
                 <div className={styles.barPlayerBlock}>
+                    
                     <div className={classNames(styles.barPlayer, styles.player)}>
                         <div className={styles.playerControls}>
                             <div className={styles.playerBtnPrev}>
