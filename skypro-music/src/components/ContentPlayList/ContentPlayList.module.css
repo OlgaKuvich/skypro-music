@@ -142,3 +142,8 @@
     text-align: right;
     color:#FFFFFF;
   }
+
+  .trackTime {
+    display: flex;
+    align-items: center;
+  }
