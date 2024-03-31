@@ -17,29 +17,9 @@ async function ContentPlayList() {
     return (
         <div className={classNames(styles.contentPlaylist, styles.playlist)}>
             {playlistArray?.map((item, index) => (
-                <PlayListItem onClick={} key={index} item={item} />
+                <PlayListItem key={index} item={item} />
             ))}
         </div>
     )
 }
 export default ContentPlayList
-
-
-// async function ContentPlayList({ setCurrentTrack }: contentPlaylistProps) {
-//     let playlistArray: trackType[];
-//     try {
-//         playlistArray = await getTracks();
-//     }
-//     catch (error) {
-//         console.error('Ошибка при получении списка воспроизведения', error);
-//         playlistArray = [];
-//     }
-//     return (
-//         <div className={classNames(styles.contentPlaylist, styles.playlist)}>
-//             {playlistArray?.map((item, index) => (
-//                 <PlayListItem onClick={()=>{setCurrentTrack(item)}} key={index} item={item} />
-//             ))}
-//         </div>
-//     )
-// }
-// export default ContentPlayList

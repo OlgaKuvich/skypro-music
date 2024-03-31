@@ -2,11 +2,11 @@ import classNames from "classnames";
 import styles from "@components/PlayListItem/PlayListItem.module.css";
 import { trackType } from "@/types";
 import Link from "next/link";
-type trackTypePros = { item: trackType; onClick: () => void }
+type trackTypePros = { item: trackType}
 
-export default function PlayListItem({ item, onClick }: trackTypePros) {
+export default function PlayListItem({ item}: trackTypePros) {
     return (
-        <div onClick={onClick} className={styles.playlistItem}>
+        <div className={styles.playlistItem}>
             <div className={classNames(styles.playlistTrack, styles.track)}>
                 <div className={styles.trackTitle}>
                     <div className={styles.trackTitleImage}>

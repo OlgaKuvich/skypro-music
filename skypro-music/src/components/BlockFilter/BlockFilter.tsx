@@ -74,7 +74,6 @@ export default function FilterBlock() {
                 </div>
                 {activeFilter === "genre" ? <FilterItem FilterList={genres} /> : ""}
             </div>
-            )
         </div >
     )
 }
