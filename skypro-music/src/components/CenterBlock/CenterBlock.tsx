@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import styles from "@components/CenterBlock/CenterBlock.module.css";
 import BlockFilter from "@components/BlockFilter/BlockFilter";
-import CotentPlayList from "@components/ContentPlayList/ContentPlayList";
+import ContentPlayList from "@components/ContentPlayList/ContentPlayList";
 
 export default function CenterBlock() {
     return (
@@ -33,7 +33,7 @@ export default function CenterBlock() {
                     </div>
                 </div>
 
-                <CotentPlayList />
+                <ContentPlayList />
 
             </div>
         </div>
