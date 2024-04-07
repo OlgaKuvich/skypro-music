@@ -17,9 +17,10 @@
   }
   
   .barPlayerProgress {
+    display: none;
     width: 100%;
     height: 5px;
-    background: #2e2e2e;
+    background: #65f1df;
   }
   
   .barPlayerBlock {
@@ -297,4 +298,11 @@
   
   .volumeProgressLine {
     width: 109px;
+  }
+
+  .barTime {
+    display: flex;
+    flex-direction: row-reverse;
+    height: 18px;
+    color: rgb(231, 49, 207)
   }

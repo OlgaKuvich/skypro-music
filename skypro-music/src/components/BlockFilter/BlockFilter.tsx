@@ -4,6 +4,7 @@ import styles from "@components/BlockFilter/BlockFilter.module.css";
 import { useState } from "react";
 import { authors, genres, years } from "./data";
 import FilterItem from "@components/FilterItem/FilterItem";
+// type FilterBlockProps = { trackList: trackType[]}
 
 export default function FilterBlock() {
     const [activeFilter, setActiveFilter] = useState<string | null>(null);
