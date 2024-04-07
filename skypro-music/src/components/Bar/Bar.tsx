@@ -79,15 +79,15 @@ export default function Bar({ track }: BarProps) {
         <div className={styles.bar}>
             <div className={styles.barContent}>
                 <audio src={track?.track_file} ref={audioRef}></audio>
-                <div className={styles.barTime}>
-                    {track && `${formatTime(currentTime)} / ${formatTime(duration)}`}
-                </div>
+                {/* <div className={styles.barTime}></div> */}
                 <ProgressBar
                     value={currentTime}
                     max={duration}
                     onChange={progressTrack}
                 />
-                {/* <div className={styles.barPlayerProgress}></div> */}
+                <div  className={styles.barPlayerProgress}>
+                {track && `${formatTime(currentTime)} / ${formatTime(duration)}`}
+                </div>
 
                 <div className={styles.barPlayerBlock}>
                     <div className={classNames(styles.barPlayer, styles.player)}>
@@ -134,16 +134,14 @@ export default function Bar({ track }: BarProps) {
                                     </svg>
                                 </div>
                                 <div className={styles.trackPlayAuthor}>
-                                    {/* <a className={styles.trackPlayAuthorLink} href="http://">
-                                        Ты та...
-                                    </a> */}
-                                    {track?.author}
+                                    <a className={styles.trackPlayAuthorLink} href="http://">
+                                        {track?.author}
+                                    </a>
                                 </div>
                                 <div className={styles.trackPlayAlbum}>
-                                    {/* <a className={styles.trackPlayAlbumLink} href="http://">
-                                        Баста
-                                    </a> */}
-                                    {track?.album}
+                                    <a className={styles.trackPlayAlbumLink} href="http://">
+                                        {track?.album}
+                                    </a>
                                 </div>
                             </div>
                             <div className={styles.trackPlayLikeDis}>

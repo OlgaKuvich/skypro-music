@@ -1,26 +1,19 @@
-import { trackType } from "@/types";
-
-type GetProps = {
-    error: string | undefined;
-    data: trackType[] | undefined;
+export async function getTracks() {
+  try {
+    const res = await fetch(
+      "https://skypro-music-api.skyeng.tech/catalog/track/all/"
+  );
+    if (!res.ok) {
+      if (res.status === 401) {
+      throw new Error("Ошибка при получении данных");
+  } else {
+    throw new Error(`Ошибка, статус: ${res.status}`);
+  }
 }
-export function getTracks({error, data}: GetProps) {
-    return fetch("https://skypro-music-api.skyeng.tech/catalog/track/all/")
-    .then((res) => {
-      
-      if (res.ok===!true) {
-        throw new Error("Данные не получены");
-      }
-      return res.json();
-    })
-    .then((res) => {
-      return {
-        error: undefined,
-        data: res,
-      };
-    })
-    .catch((error: Error) => {
-      return { error: error.message, data: undefined };
-    });
-}
-
+const data = await res.json();
+return data;
+  } catch (error) {
+console.warn(error);
+throw error
+  }
+}   
