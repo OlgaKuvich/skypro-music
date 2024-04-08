@@ -79,14 +79,16 @@ export default function Bar({ track }: BarProps) {
         <div className={styles.bar}>
             <div className={styles.barContent}>
                 <audio src={track?.track_file} ref={audioRef}></audio>
-                {/* <div className={styles.barTime}></div> */}
+                <div  className={styles.barTime}>
+                {track && `${formatTime(currentTime)} / ${formatTime(duration)}`}
+                </div>
                 <ProgressBar
                     value={currentTime}
                     max={duration}
                     onChange={progressTrack}
                 />
                 <div  className={styles.barPlayerProgress}>
-                {track && `${formatTime(currentTime)} / ${formatTime(duration)}`}
+                {/* {track && `${formatTime(currentTime)} / ${formatTime(duration)}`} */}
                 </div>
 
                 <div className={styles.barPlayerBlock}>

@@ -28,9 +28,9 @@ export default function BarVolumeBlock({handleVolume}: BarVolumeProps) {
                         name="range"
                         min={0}
                         value={volume}
-                        max={1}
+                        max={100}
                         onChange={onChange}
-                        step={0.01}
+                        step={1}
                     />
                 </div>
             </div>
