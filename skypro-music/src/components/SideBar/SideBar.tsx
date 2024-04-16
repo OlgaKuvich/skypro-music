@@ -23,7 +23,7 @@ export default function SideBar() {
                             src="/image/playlist01.png"
                             alt="day's playlist"
                             width={250}
-                            height={150}
+                            height={150}                          
                         />
                     </a>
                 </div>

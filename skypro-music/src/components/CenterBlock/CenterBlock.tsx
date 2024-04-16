@@ -1,9 +1,20 @@
 import classNames from "classnames";
 import styles from "@components/CenterBlock/CenterBlock.module.css";
 import BlockFilter from "@components/BlockFilter/BlockFilter";
-import CotentPlayList from "@components/ContentPlayList/ContentPlayList";
+import ContentPlayList from "@components/ContentPlayList/ContentPlayList";
+import { trackType } from "@/types";
+import { useEffect, useState } from "react";
+import { getTracks } from "@/api/tracks";
+type CenterBlockProps = {
+    setTrack: (param: trackType) => void;
+};
 
-export default function CenterBlock() {
+export default function CenterBlock({ setTrack }: CenterBlockProps) {
+    const [trackList, setTrackList] = useState([]);
+    useEffect(() => {
+        getTracks().then((data) => setTrackList(data))
+    }, []);
+
     return (
         <div className={classNames(styles.mainCenterblock, styles.centerblock)}>
             <div className={classNames(styles.centerblockSearch, styles.search)}>
@@ -19,7 +30,7 @@ export default function CenterBlock() {
             </div>
             <h2 className={styles.centerblockH2}>Треки</h2>
 
-            <BlockFilter />
+            <BlockFilter trackList={trackList} />
 
             <div className={classNames(styles.centerblockContent, styles.playlistContent)}>
                 <div className={classNames(styles.contentTitle, styles.playlistTitle)}>
@@ -33,7 +44,7 @@ export default function CenterBlock() {
                     </div>
                 </div>
 
-                <CotentPlayList />
+                <ContentPlayList trackList={trackList} setTrack={setTrack} />
 
             </div>
         </div>
