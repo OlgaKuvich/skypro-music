@@ -8,15 +8,15 @@ import { useState } from "react";
 import { trackType } from "@/types";
 
 export default function Main() {
-    const [track, setTrack] = useState<trackType | null>(null);
+    const [track,] = useState<trackType | null>(null);
     return (
         <>
             <main className={styles.main}>
                 <Nav />
-                <CenterBlock setTrack={setTrack} />
+                <CenterBlock />
                 <SideBar />
             </main>
-            {track ? <Bar track={track}/> : ""}
+            {track ? <Bar /> : ""}
             {/* {track && <Bar tracks={track} />} */}
             <footer className={styles.footer} />
         </>

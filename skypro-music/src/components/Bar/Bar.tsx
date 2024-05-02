@@ -6,11 +6,15 @@ import { useEffect, useRef, useState } from "react";
 import { trackType } from "@/types";
 import ProgressBar from "@components/ProgressBar/ProgressBar";
 import { formatTime } from "@/lib/formatTime";
-type BarProps = {
-    track: trackType | null;
-}
+import { useAppDispatch, useAppSelector } from "@/hooks";
+import { nextTrack } from "@/store/features/playlistSlice";
+// type BarProps = {
+//     track: trackType | null;
+// }
 
-export default function Bar({ track }: BarProps) {
+export default function Bar() {
+    const track = useAppSelector((store) => store.playlist.currentTrack);
+    const dispatch = useAppDispatch();
     // Использование useRef для получения доступа к элементу <audio>
     const audioRef = useRef<HTMLAudioElement>(null);
     const duration = audioRef.current?.duration || 0;
@@ -46,6 +50,7 @@ export default function Bar({ track }: BarProps) {
         }
         setIsPlaying((prev) => !prev);
     };
+    
     //cледующий трек
     const progressTrack = (value: any) => {
         setCurrentTime(value);
@@ -108,7 +113,7 @@ export default function Bar({ track }: BarProps) {
                                     )}
                                 </svg>
                             </div>
-                            <div onClick={() => alert(`Эта функция пока недоступна`)} className={styles.playerBtnNext}>
+                            <div onClick={() => dispatch(nextTrack())} className={styles.playerBtnNext}>
                                 <svg className={styles.playerBtnNextSvg}>
                                     <use href="/image/icon/sprite.svg#icon-next" />
                                 </svg>
