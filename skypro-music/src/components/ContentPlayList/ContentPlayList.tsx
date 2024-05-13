@@ -19,7 +19,7 @@ export default function ContentPlayList() {
 
     // настройка воспроизведения трека
     const dispatch = useAppDispatch();
-    const { track } = useAppSelector((state) => state.track);
+    // const { track } = useAppSelector((state) => state.track);
     const handleTrack = (track: trackType) => {
         dispatch(setCurrentTrack(track));
         dispatch(setPlayList(trackList));
