@@ -19,19 +19,19 @@ export default function ContentPlayList() {
 
     // настройка воспроизведения трека
     const dispatch = useAppDispatch();
-    // const { track } = useAppSelector((state) => state.track);
+    const { track } = useAppSelector((state) => state.track);
     const handleTrack = (track: trackType) => {
-        // dispatch(setCurrentTrack(track));
+        dispatch(setCurrentTrack(track));
         dispatch(setPlayList(trackList));
       };
 
     return (
         <div className={classNames(styles.contentPlaylist, styles.playlist)}>
             <div>{currentTrack?.name}</div>
-            {trackList?.map((track: trackType) => (
+            {trackList?.map((track) => (
                 <PlayListItem
                     key={track.id}
-                    setTrack={() => handleTrack(track)}
+                    onClick ={() => handleTrack(track)}
                     name={track.name}
                     author={track.author}
                     album={track.album}

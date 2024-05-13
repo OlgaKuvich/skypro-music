@@ -1,22 +1,22 @@
-// import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-// type AuthStateType =  {
-//   authState: boolean;
-// }
+type AuthStateType =  {
+  authState: boolean;
+}
 
-// const initialState: AuthStateType = {
-//   authState: false,
-// };
+const initialState: AuthStateType = {
+  authState: false,
+};
 
-// const authSlice = createSlice({
-//   name: "auth",
-//   initialState,
-//   reducers: {
-//     setAuthState: (state, action: PayloadAction<boolean>) => {
-//       state.authState = action.payload;
-//     },
-//   },
-// });
+const authSlice = createSlice({
+  name: "auth",
+  initialState,
+  reducers: {
+    setAuthState: (state, action: PayloadAction<boolean>) => {
+      state.authState = action.payload;
+    },
+  },
+});
 
-// export const { setAuthState } = authSlice.actions;
-// export const authReducer = authSlice.reducer;
+export const { setAuthState } = authSlice.actions;
+export const authReducer = authSlice.reducer;

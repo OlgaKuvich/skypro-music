@@ -16,8 +16,8 @@ export default function Main() {
                 <CenterBlock />
                 <SideBar />
             </main>
-            {track ? <Bar /> : ""}
-            {/* {track && <Bar tracks={track} />} */}
+            {/* {track ? <Bar /> : ""} */}
+            <Bar />
             <footer className={styles.footer} />
         </>
     )

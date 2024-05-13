@@ -1,5 +1,5 @@
 import { trackType } from "@/types";
-import { createSlice, current, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 type PlaylistStateType = {
   playlist: trackType[];
@@ -29,8 +29,8 @@ const playlistSlice = createSlice({
     setCurrentTrack: (state, action: PayloadAction<SetCurrentTrackType>) => {
       state.currentTrack = action.payload.currentTrack;
       state.playlist = action.payload.playlist;
-      state.shuffledPlaylist = [...action.payload.playlist].sort(() => 0.5 - Math.random()
-      );
+      // state.shuffledPlaylist = [...action.payload.playlist].sort(() => 0.5 - Math.random()
+      // );
     },
     nextTrack: (state) => {
       const playlist = state.isShuffled
