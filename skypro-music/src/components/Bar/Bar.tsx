@@ -6,10 +6,10 @@ import { useEffect, useRef, useState } from "react";
 import ProgressBar from "@components/ProgressBar/ProgressBar";
 import { formatTime } from "@/lib/formatTime";
 import { useAppDispatch, useAppSelector } from "@/hooks";
-import { nextTrack, setCurrentTrack } from "@/store/features/playlistSlice";
+import { nextTrack, setCurrentTrack, setPause, setPlay } from "@/store/features/playlistSlice";
 
 export default function Bar() {
-    const { currentTrack } = useAppSelector(
+    const { currentTrack, isPlaying } = useAppSelector(
         (store) => store.playlist);
     const dispatch = useAppDispatch();
     // Использование useRef для получения доступа к элементу <audio>
@@ -19,18 +19,20 @@ export default function Bar() {
     const [isLoop, setIsLoop] = useState(false);
 
     // Состояние для управления воспроизведением
-    const [isPlaying, setIsPlaying] = useState(false);
+    // const [isPlaying, setIsPlaying] = useState(false);
 
     useEffect(() => {
+        dispatch(setPlay());
         audioRef.current?.play();
-    }, []);
+    }, [currentTrack, dispatch]);
 
+// console.log
     useEffect(() => {
         audioRef.current?.addEventListener("timeupdate", updateTime);
         return () => {
             audioRef.current?.removeEventListener("timeupdate", updateTime);
         };
-    }, []);
+    }, [currentTrack]);
 
     const updateTime = () => {
         setCurrentTime(audioRef.current!.currentTime);
@@ -40,12 +42,14 @@ export default function Bar() {
     const togglePlay = () => {
         if (audioRef.current) {
             if (isPlaying) {
+                dispatch(setPause())
                 audioRef.current.pause();
             } else {
                 audioRef.current.play();
+                dispatch(setPlay())
             }
         }
-        setIsPlaying((prev) => !prev);
+        // setIsPlaying((prev) => !prev);
     };
 
     //cледующий трек

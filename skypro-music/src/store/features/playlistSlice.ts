@@ -43,6 +43,7 @@ const playlistSlice = createSlice({
       if (playlist[newTrack]) {
         state.currentTrack = playlist[newTrack];
       }
+      state.isPlaying = true;
     },
     prevTrack: (state) => {
       const playlist = state.isShuffled
@@ -55,6 +56,7 @@ const playlistSlice = createSlice({
       if (playlist[newTrack]) {
         state.currentTrack = playlist[newTrack];
       }
+      state.isPlaying = true;
     },
     setPlayList: (state, action) => {
       state.currentTrack = action.payload;
