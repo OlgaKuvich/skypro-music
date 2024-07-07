@@ -6,10 +6,10 @@ import { useEffect, useRef, useState } from "react";
 import ProgressBar from "@components/ProgressBar/ProgressBar";
 import { formatTime } from "@/lib/formatTime";
 import { useAppDispatch, useAppSelector } from "@/hooks";
-import { nextTrack, setCurrentTrack, setPause, setPlay } from "@/store/features/playlistSlice";
+import { nextTrack, prevTrack, setCurrentTrack, setPause, setPlay, setToggleShuffled } from "@/store/features/playlistSlice";
 
 export default function Bar() {
-    const { currentTrack, isPlaying } = useAppSelector(
+    const { currentTrack, isPlaying, isShuffled } = useAppSelector(
         (store) => store.playlist);
     const dispatch = useAppDispatch();
     // Использование useRef для получения доступа к элементу <audio>
@@ -26,7 +26,7 @@ export default function Bar() {
         audioRef.current?.play();
     }, [currentTrack, dispatch]);
 
-// console.log
+    // console.log
     useEffect(() => {
         audioRef.current?.addEventListener("timeupdate", updateTime);
         return () => {
@@ -101,7 +101,7 @@ export default function Bar() {
                         <div className={styles.barPlayerBlock}>
                             <div className={classNames(styles.barPlayer, styles.player)}>
                                 <div className={styles.playerControls}>
-                                    <div onClick={() => alert(`Эта функция пока недоступна`)} className={styles.playerBtnPrev}>
+                                    <div onClick={() => dispatch(prevTrack())} className={styles.playerBtnPrev}>
                                         <svg className={styles.playerBtnPrevSvg}>
                                             <use href="/image/icon/sprite.svg#icon-prev" />
                                         </svg>
@@ -129,10 +129,16 @@ export default function Bar() {
                                             )}
                                         </svg>
                                     </div>
-                                    <div className={classNames(styles.playerBtnShuffle, styles._btnIcon)}>
-                                        <svg className={styles.playerBtnShuffleSvg}>
-                                            <use href="/image/icon/sprite.svg#icon-shuffle" />
-                                        </svg>
+                                    <div onClick={() => dispatch(setToggleShuffled())} className={classNames(styles.playerBtnShuffle, styles._btnIcon)}>
+                                        {!isShuffled ? (
+                                            <svg className={styles.playerBtnShuffleSvg}>
+                                                <use href="/img/icon/sprite.svg#icon-shuffle"></use>
+                                            </svg>
+                                        ) : (
+                                            <svg className={styles.playerBtnShuffleSvgActive}>
+                                                <use href="/img/icon/sprite.svg#icon-shuffle"></use>
+                                            </svg>
+                                        )}
                                     </div>
                                 </div>
                                 <div className={classNames(styles.playerTrackPlay, styles.trackPlay)}>
